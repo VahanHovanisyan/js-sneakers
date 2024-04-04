@@ -24,7 +24,7 @@ function getSearch() {
         searchButtonRemove.remove();
       },
       type: 'button',
-      innerHTML: '<svg class="search__icon search__icon_remove"><use xlink:href="/img/svg/sprite.svg#cartIconRemove"></use></svg>'
+      innerHTML: '<svg class="search__icon search__icon_remove"><use xlink:href="./img/svg/sprite.svg#cartIconRemove"></use></svg>'
     }
   })
   search.querySelector('.search__input').addEventListener('input', () => {
