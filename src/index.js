@@ -55,7 +55,7 @@ async function get() {
     new Burger('header'); // burger render
 
     // router Main page 
-    router.on('/vanillaJs', async function () {
+    router.on('/vanillaJs/', async function () {
         main.innerHTML = '';
         const mainModule = await import('./pages/main.js');
         const mainPage = mainModule.getMainPage();
@@ -75,7 +75,7 @@ async function get() {
     });
 
     // router Favorite page
-    router.on('/favorite', async function () {
+    router.on('/vanillaJs/favorite/', async function () {
         main.innerHTML = '';
         const favoriteModule = await import('./pages/favorite.js');
         const favoritePage = favoriteModule.getFavoritePage();
@@ -87,7 +87,7 @@ async function get() {
     });
 
     // router Profile page
-    router.on('/profile', async function () {
+    router.on('/vanillaJs/profile/', async function () {
         main.innerHTML = '';
         const profileModule = await import('./pages/profile.js');
         const profilePage = profileModule.getProfilePage();

@@ -103,14 +103,14 @@ export function getNavigation() {
         tag: 'a',
         classList: ['nav__link'],
         attributes: {
-            'href': '/favorite',
+            'href': '/vanillaJs/favorite/',
         },
         parent: navItem2
     })
 
     navLink2.addEventListener('click', function (event) {
         event.preventDefault();
-        router.navigate('/favorite/');
+        router.navigate('/vanillaJs/favorite/');
         
     })
 
@@ -118,14 +118,14 @@ export function getNavigation() {
         tag: 'a',
         classList: ['nav__link'],
         attributes: {
-            'href': '/profile/',
+            'href': '/vanillaJs/profile/',
         },
         parent: navItem3
     })
 
     navLink3.addEventListener('click', function (event) {
         event.preventDefault();
-        router.navigate('/profile/');
+        router.navigate('/vanillaJs/profile/');
     })
 
     const iconCart = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
