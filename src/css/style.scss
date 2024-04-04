@@ -1,0 +1,146 @@
+
+*,*:before,*:after {
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+
+}
+
+html,body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: Inter, Arial;
+	background-color: rgb(231, 246, 255);
+}
+
+img {
+	max-width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.container {
+  max-width: 1170px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+@media(min-width: 768px) {
+  .container {
+    padding: 0 45px;
+  }
+}
+.main {
+  padding-top: 40px;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.title {
+  margin: 0;
+  color: #000;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.flexVCenter {
+  display: flex;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+}
+.listReset {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.buttonReset {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.inputReset {
+	-webkit-appearance: none;
+	appearance: none;
+	border: none;
+	border-radius: 0;
+	background-color: #fff;
+  font-family: inherit;
+
+	&::-webkit-search-decoration,
+	&::-webkit-search-cancel-button,
+	&::-webkit-search-results-button,
+	&::-webkit-search-results-decoration {
+		display: none;
+	}
+}
+
+.overlay{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); 
+  z-index: 999; 
+}
+
+
+.btn {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  width: 100%;
+  padding: 20px 35px;
+  border-radius: 18px;
+  background: #9dd458;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background .3s;
+
+  &:hover{
+    background: lighten(#9dd458, 5%);
+
+    .checkoutBtnIcon{
+      transform: translateX(-5px);
+    }
+  }
+  &:active{
+    transition: background .1s;
+    background: darken(#9dd458, 5%);
+  }
+}
+
+.btnIcon {
+  width: 17px;
+  height: 12px;
+  transform: rotate(180deg);
+  transition: transform .3s;
+}

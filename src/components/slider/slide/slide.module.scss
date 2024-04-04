@@ -1,0 +1,62 @@
+.slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 20px;
+
+    @media (min-width: 700px) {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        @media (min-width: 700px) {
+            width: auto;
+        }
+    }
+
+    &__title {
+        max-width: 400px;
+        margin: 0;
+        margin-bottom: 15px;
+        color: #000;
+        font-size: 20px;
+        font-weight: 700;
+
+        @media (min-width: 992px) {
+            font-size: 38px;
+        }
+    }
+
+    &__titleImportantWord {
+        display: block;
+        color: rgb(139, 180, 60);
+    }
+
+    &__button {
+        flex-grow: 1;
+        padding: 15px 30px;
+        background-color: rgb(139, 180, 60);
+        color: #fff;
+        border: none;
+        border-radius: 15px;
+        color: rgb(255, 255, 255);
+        font-weight: 700;
+        cursor: pointer;
+        @media (min-width: 700px) {
+            align-self: stretch;
+            max-width: 100px;
+        }
+    }
+
+    &__img {
+        max-width: 640px;
+    }
+}

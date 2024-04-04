@@ -1,0 +1,42 @@
+.hero {
+  padding: 40px 0;
+}
+
+.container {
+
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.title {
+  margin: 0;
+  margin-bottom: 20px;
+  color: #000;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;  
+  gap: 35px;
+  padding: 0;
+  padding-top: 30px;
+  list-style: none;
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: stretch;
+  }
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

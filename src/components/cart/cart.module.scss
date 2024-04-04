@@ -1,0 +1,101 @@
+.aside {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  bottom: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  width: 385px;
+  padding: 30px;
+  background: #fff;
+  box-shadow: -10px 4px 24px 0px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s;
+}
+
+.top {
+  justify-content: space-between;
+}
+
+.btn {
+  width: 32px;
+  height: 32px;
+}
+
+.asideTitle {
+  color: #000;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.itemCatalog {
+  flex: 1 1 auto;
+  overflow: auto;
+}
+.itemIcon {
+  width: 31px;
+  height: 31px;
+  transition:
+    fill-opacity 0.3s,
+    stroke-opacity 0.3s;
+  &:hover {
+    fill-opacity: 0.7;
+    stroke-opacity: 0.7;
+  }
+}
+.checkout {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.checkoutTextBox {
+  display: flex;
+
+  &::after {
+    content: "";
+    position: relative;
+    bottom: 4px;
+    flex-grow: 1;
+    order: 2;
+    margin: 0 10px;
+    border-bottom: 1px dashed #dfdfdf;
+  }
+}
+
+.checkoutTotalPrice,
+.checkoutTaxPrice {
+  order: 3;
+}
+
+.checkoutBtn {
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  &:hover {
+    .checkoutBtnIcon {
+      transform: translateX(5px);
+    }
+  }
+}
+
+.checkoutBtnIcon {
+  width: 17px;
+  height: 12px;
+  transform: none;
+}
+
+.cartEmpty{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartEmptyImg {
+  max-width: 120px;
+  height: 100px;
+  margin: 0 auto 20px;
+}

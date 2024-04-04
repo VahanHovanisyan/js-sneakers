@@ -1,0 +1,28 @@
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 250px;
+  width: 100%;
+  height: 50px;
+  padding: 10px;
+  border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  overflow: hidden;
+
+  &__input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #000;
+    background-color: #fff;
+  }
+
+  &__icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+  }
+}
