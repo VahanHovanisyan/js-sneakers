@@ -55,7 +55,7 @@ async function get() {
     new Burger('header'); // burger render
 
     // router Main page 
-    router.on('/', async function () {
+    router.on('/vanillaJs', async function () {
         main.innerHTML = '';
         const mainModule = await import('./pages/main.js');
         const mainPage = mainModule.getMainPage();
