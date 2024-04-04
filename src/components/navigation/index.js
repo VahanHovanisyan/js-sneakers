@@ -163,9 +163,9 @@ export function getNavigation() {
     const iconFavoriteUse = document.createElementNS('http://www.w3.org/2000/svg', 'use');
     const iconProfileUse = document.createElementNS('http://www.w3.org/2000/svg', 'use');
 
-    iconCartUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'img/svg/sprite.svg#cart');
-    iconFavoriteUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'img/svg/sprite.svg#favorite-nav');
-    iconProfileUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'img/svg/sprite.svg#profile');
+    iconCartUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', './img/svg/sprite.svg#cart');
+    iconFavoriteUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', './img/svg/sprite.svg#favorite-nav');
+    iconProfileUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', './img/svg/sprite.svg#profile');
 
     iconCart.append(iconCartUse);
     iconFavorite.append(iconFavoriteUse);
