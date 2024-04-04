@@ -5,7 +5,7 @@ import { getCard } from "/src/components/card";
 import getSearch from "/src/components/search";
 import { favoriteItemsArray } from "/src";
 import { cartItemsArray } from "/src";
-import { itemsArray } from "../..";
+import { itemsArray } from "/src";
 
 const { search, searchInput, searchButtonRemove } = getSearch();
 

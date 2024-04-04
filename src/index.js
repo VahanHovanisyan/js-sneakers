@@ -35,11 +35,11 @@ async function getFetch(urlItems, array) {
             })
         }) : []
 }
-    // router pages 
-    import Navigo from "navigo";
-    export const router = new Navigo('/');
-    export const app = document.getElementById('app');
-    import { getHero } from '/src/components/hero';
+// router pages 
+import Navigo from "navigo";
+export const router = new Navigo('/');
+export const app = document.getElementById('app');
+import { getHero } from '/src/components/hero';
 
 async function get() {
     await getFetch('promotionProduct', sliderProducts)
@@ -55,7 +55,7 @@ async function get() {
     new Burger('header'); // burger render
 
     // router Main page 
-    router.on('/vanillaJs/', async function () {
+    router.on('/', async function () {
         main.innerHTML = '';
         const mainModule = await import('./pages/main.js');
         const mainPage = mainModule.getMainPage();
@@ -75,7 +75,7 @@ async function get() {
     });
 
     // router Favorite page
-    router.on('/vanillaJs/favorite/', async function () {
+    router.on('/favorite', async function () {
         main.innerHTML = '';
         const favoriteModule = await import('./pages/favorite.js');
         const favoritePage = favoriteModule.getFavoritePage();
@@ -84,10 +84,17 @@ async function get() {
         favoritePage.append(hero);
         heroTitle.textContent = 'Закладки';
 
+        const swiper = new Swiper('.hero__slider', {
+            modules: [Navigation],
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
     });
 
     // router Profile page
-    router.on('/vanillaJs/profile/', async function () {
+    router.on('/profile', async function () {
         main.innerHTML = '';
         const profileModule = await import('./pages/profile.js');
         const profilePage = profileModule.getProfilePage();
