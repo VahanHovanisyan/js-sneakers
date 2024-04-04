@@ -14,7 +14,7 @@ export function getLogo() {
 
 	logo.addEventListener('click', function (event) {
 		event.preventDefault();
-		router.navigate('/');
+		router.navigate('/vanillaJs');
 	})
 
 	const img = createElement({
