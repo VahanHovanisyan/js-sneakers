@@ -1,1 +1,0 @@
-import{c as o,f as a}from"./index-C_o5zT5A.js";import{g as i}from"./index-Br4ha-bR.js";function p(){const{hero:t,heroContainer:n,cardsList:s,heroTitle:r}=i(a),e=o({tag:"div",classList:["favorite-page"]});return e.append(t),r.textContent="Закладки",e}export{p as getFavoritePage};
