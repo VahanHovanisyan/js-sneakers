@@ -8,5 +8,6 @@ export const app = document.getElementById('app');
 (async () => {
     getHeader()
     await getFetchAll();
+    
     renderPages();
 })();

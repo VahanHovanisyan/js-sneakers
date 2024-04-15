@@ -1,1 +1,0 @@
-import{c as o,o as a}from"./index-Ci18AaFk.js";import{g as n}from"./index-Xl2DegO5.js";function g(){const{hero:t,heroContainer:s,cardsList:i,heroTitle:r}=n(a),e=o({tag:"div",classList:["profile-page"]});return e.append(t),r.textContent="Мои заказы",e}export{g as getProfilePage};

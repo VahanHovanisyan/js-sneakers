@@ -72,7 +72,6 @@ export function getNavigation() {
         classList: ['nav__link'],
         attributes: {
             'href': '/favorite',
-            'data-navigo': '',
         },
         parent: navItem2
     })
@@ -87,7 +86,6 @@ export function getNavigation() {
         classList: ['nav__link'],
         attributes: {
             'href': '/profile',
-            'data-navigo': '',
         },
         parent: navItem3
     })

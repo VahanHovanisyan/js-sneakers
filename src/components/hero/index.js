@@ -107,15 +107,10 @@ export function getHero(getArray) {
       container.append(conteinerInfoEmpty);
     } else {
       conteinerInfoEmpty.remove();
-      heroContent.append(heroTitle);
-      heroContent.append(search);
-      container.append(cardsList);
     }
   }
-
+  getConteinerInfoEmpty(0, window.location.hash);
   function renderItems(array = arrayLoadItems) {
-
-    // getConteinerInfoEmpty(0, window.location.hash);
 
     return array
       .filter(item => item.titleSmall.toLowerCase().includes(searchInput.value.toLowerCase()))
@@ -136,7 +131,7 @@ export function getHero(getArray) {
           onAddToFavorite() {
             const isExist = favoriteItemsArray.find(itemFavorite => itemFavorite.id === item.id);
             if (isExist) {
-              // getConteinerInfoEmpty(1, window.location.hash)
+              getConteinerInfoEmpty(1, window.location.hash)
               document.querySelector(`[data-card="${isExist.id}"]`)?.querySelectorAll('use')[0].setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'img/svg/sprite.svg#favorite');
               let index = favoriteItemsArray.indexOf(isExist);
               favoriteItemsArray.splice(index, 1);
