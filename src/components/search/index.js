@@ -9,7 +9,7 @@ function getSearch() {
     params: {
       innerHTML: /* html */ `
         <svg class="search__icon">
-          <use xlink:href="./img/svg/sprite.svg#search"></use>
+          <use xlink:href="img/svg/sprite.svg#search"></use>
         </svg>
         <input class="search__input" type="text" placeholder="Поиск по названию">
       `
@@ -20,15 +20,15 @@ function getSearch() {
     classList: ['search__button-remove', 'buttonReset'],
     params: {
       onclick: () => {
-        search.querySelector('.search__input').value = null;
+        search.querySelector('.search__input').value = '';
         searchButtonRemove.remove();
       },
       type: 'button',
-      innerHTML: '<svg class="search__icon search__icon_remove"><use xlink:href="./img/svg/sprite.svg#cartIconRemove"></use></svg>'
+      innerHTML: '<svg class="search__icon search__icon_remove"><use xlink:href="img/svg/sprite.svg#cartIconRemove"></use></svg>'
     }
   })
   search.querySelector('.search__input').addEventListener('input', () => {
-    if (search.querySelector('.search__input').value === null) {
+    if (search.querySelector('.search__input').value === '') {
       searchButtonRemove.remove();
     } else {
       search.append(searchButtonRemove);

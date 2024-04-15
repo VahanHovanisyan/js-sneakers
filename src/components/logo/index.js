@@ -1,5 +1,5 @@
 import "./logo.css"
-import { router } from "/src";
+import { router } from "/src/router";
 import createElement from "/src/components/createElement";
 
 export function getLogo() {
@@ -8,7 +8,8 @@ export function getLogo() {
 		tag: 'a',
 		classList: ['logo'],
 		attributes: {
-			'href': '/'
+			'href': '/',
+			'data-navigo': '',
 		}
 	})
 
@@ -20,7 +21,7 @@ export function getLogo() {
 	const img = createElement({
 		tag: 'img',
 		classList: ['logo__img'],
-		attributes: {'src': './img/logo.png'},
+		attributes: {'src': 'img/logo.png'},
 		parent: logo
 	})
 

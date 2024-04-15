@@ -1,41 +1,48 @@
 import styles from "./slide.module.scss";
 import createElement from "/src/components/createElement";
 
-function Slide(imgUrl, titleSpan, title) {
+function Slide(imgUrl = '', titleSpan = '', title = '') {
 
     //slide 
+
     const slide = createElement({
         tag: 'div',
         classList: [styles.slide],
     })
-
-    // slide content
     const slideContent = createElement({
         tag: 'div',
         classList: [styles.slide__content],
         parent: slide
     })
 
-    //slide title
-    const slideTitle = createElement({
-        tag: 'h2',
-        classList: [styles.slide__title],
-        params: {
-            textContent: title
-        },
-        parent: slideContent
-    })
+        //slide important word
+        const slideTitleImportantWord = createElement({
+            tag: 'span',
+            classList: [styles.slide__titleImportantWord],
+            params: {
+                textContent: titleSpan
+            }
+        })
 
-    //slide important word
-    const slideTitleImportantWord = createElement({
-        tag: 'span',
-        classList: [styles.slide__titleImportantWord],
-        params: {
-            textContent: titleSpan
-        }
-    })
-    slideTitle.prepend(slideTitleImportantWord);
-    
+    if (title) {
+        //slide title
+        const slideTitle = createElement({
+            tag: 'h2',
+            classList: [styles.slide__title],
+            params: {
+                textContent: title
+            },
+            parent: slideContent
+        })
+        slideTitle.prepend(slideTitleImportantWord);
+    } else {
+        const slideTitleLoad = createElement({
+            tag: 'h2',
+            classList: [styles.load, styles.load_text],
+            parent: slideContent
+        })
+    }
+
     //slide Button
     const slideButton = createElement({
         tag: 'button',
@@ -45,17 +52,25 @@ function Slide(imgUrl, titleSpan, title) {
         },
         parent: slideContent
     })
+    if (imgUrl) {
+        //slide img
+        const slideImg = createElement({
+            tag: 'img',
+            classList: [styles.slide__img],
+            attributes: {
+                src: imgUrl
+            },
+            parent: slide
+        })
+    } else {
+        const slideImgLoad = createElement({
+            tag: 'div',
+            classList: [styles.load, styles.load_img],
+            parent: slide
+        })
+    }
 
-    //slide img
-    const slideImg = createElement({
-        tag: 'img',
-        classList: [styles.slide__img],
-        attributes: {
-            src: imgUrl
-        },
-        parent: slide
-    })
-    
+
     return slide
 
 }

@@ -1,15 +1,19 @@
 import "./navigation.css";
-import { router } from "/src";
+import { router } from "/src/router";
 import createElement from "/src/components/createElement";
 import createCartAside from "/src/components/cart"; // cart
-import createCartItem from "/src/components/cartItem" // cart Item
-import { cartItemsArray } from "/src";
-
-import { app } from "/src/";
+import { cartItemsArray } from "/src/fetch";
+import { orderItemsArray } from "/src/fetch";
 
 export function getNavigation() {
 
-    const { overlay, aside, itemCatalog, cartIsEmpty, checkout } = createCartAside();
+    const iconCartText = createElement({
+        tag: 'span',
+        classList: ['nav__icon-text nav__icon-text_total-price'],
+        params: {
+            textContent: ` руб.`,
+        }
+    })
 
     const nav = createElement({
         tag: 'nav',
@@ -57,43 +61,7 @@ export function getNavigation() {
         classList: ['nav__link', 'buttonReset'],
         params: {
             onclick: () => {
-                app.appendChild(overlay);
-                setTimeout(() => { aside.style.right = 0; }, 0);
-
-                if (cartItemsArray.length === 0) {
-                    aside.append(cartIsEmpty);
-                    itemCatalog.remove();
-                    checkout.remove();
-                    return;
-                }
-                aside.append(itemCatalog);
-                aside.append(checkout);
-                cartIsEmpty.remove();
-                itemCatalog.innerHTML = '';
-                cartItemsArray.forEach((item) => {
-                    itemCatalog.append(
-                        createCartItem({
-                            id: item.id,
-                            imgUrl: item.imgUrl,
-                            title: item.title,
-                            titleSmall: item.titleSmall,
-                            price: item.price,
-                            onRemoveCartItem: () => {
-                                document.querySelector(`[data-card="${item.id}"]`)?.querySelectorAll('use')[1].setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', './img/svg/sprite.svg#cardUnChecked');
-                                let index = cartItemsArray.indexOf(item);
-                                cartItemsArray.splice(index, 1);
-                                fetch(`https://my-project-87c87-default-rtdb.europe-west1.firebasedatabase.app/cart/${item.key || item.keyId}.json`, {
-                                    method: 'DELETE',
-                                })
-                                if (cartItemsArray.length === 0) {
-                                    aside.append(cartIsEmpty);
-                                    itemCatalog.remove();
-                                    checkout.remove();
-                                }
-                            }
-                        })
-                    )
-                })
+                createCartAside(cartItemsArray, orderItemsArray).overlay;
             }
         },
         parent: navItem1
@@ -104,6 +72,7 @@ export function getNavigation() {
         classList: ['nav__link'],
         attributes: {
             'href': '/favorite',
+            'data-navigo': '',
         },
         parent: navItem2
     })
@@ -111,7 +80,6 @@ export function getNavigation() {
     navLink2.addEventListener('click', function (event) {
         event.preventDefault();
         router.navigate('/favorite');
-        
     })
 
     const navLink3 = createElement({
@@ -119,6 +87,7 @@ export function getNavigation() {
         classList: ['nav__link'],
         attributes: {
             'href': '/profile',
+            'data-navigo': '',
         },
         parent: navItem3
     })
@@ -134,14 +103,6 @@ export function getNavigation() {
     iconFavorite.classList.add('nav__icon');
     const iconProfile = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     iconProfile.classList.add('nav__icon');
-
-    const iconCartText = createElement({
-        tag: 'span',
-        classList: ['nav__icon-text'],
-        params: {
-            textContent: '1205 rub'
-        }
-    })
 
     const iconFavoriteText = createElement({
         tag: 'span',
@@ -163,9 +124,9 @@ export function getNavigation() {
     const iconFavoriteUse = document.createElementNS('http://www.w3.org/2000/svg', 'use');
     const iconProfileUse = document.createElementNS('http://www.w3.org/2000/svg', 'use');
 
-    iconCartUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', './img/svg/sprite.svg#cart');
-    iconFavoriteUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', './img/svg/sprite.svg#favorite-nav');
-    iconProfileUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', './img/svg/sprite.svg#profile');
+    iconCartUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'img/svg/sprite.svg#cart');
+    iconFavoriteUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'img/svg/sprite.svg#favorite-nav');
+    iconProfileUse.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'img/svg/sprite.svg#profile');
 
     iconCart.append(iconCartUse);
     iconFavorite.append(iconFavoriteUse);

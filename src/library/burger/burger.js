@@ -184,7 +184,7 @@ export default class Burger {
     desctopVersion() {
         this.header.classList.add('header_desctop');
         this.nav.classList.add('nav_desctop');
-        this.burger.remove();
+        this.burger?.remove();
         this.nav.style.paddingTop = '';
         this.enableScroll();
         this.getOffsetSize(false);

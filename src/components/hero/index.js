@@ -1,14 +1,46 @@
 import styles from "./hero.module.scss";
 import createElement from "/src/components/createElement";
-import { getSlider } from "/src/components/slider";
+import { router } from "/src/router";
 import { getCard } from "/src/components/card";
 import getSearch from "/src/components/search";
-import { favoriteItemsArray } from "/src";
-import { cartItemsArray } from "/src";
-import { itemsArray } from "/src";
+import { favoriteItemsArray } from "/src/fetch";
+import { cartItemsArray } from "/src/fetch";
+import getInfo from "/src/components/info";
+
+export const arrayLoadItems = [
+  {
+    titleSmall: '',
+    price: '',
+    imgUrl: '',
+  },
+  {
+    titleSmall: '',
+    price: '',
+    imgUrl: '',
+  },
+  {
+    titleSmall: '',
+    price: '',
+    imgUrl: '',
+  },
+  {
+    titleSmall: '',
+    price: '',
+    imgUrl: '',
+  },
+  {
+    titleSmall: '',
+    price: '',
+    imgUrl: '',
+  },
+  {
+    titleSmall: '',
+    price: '',
+    imgUrl: '',
+  },
+];
 
 const { search, searchInput, searchButtonRemove } = getSearch();
-
 export function getHero(getArray) {
 
   const hero = createElement({
@@ -21,10 +53,6 @@ export function getHero(getArray) {
     classList: ['container', styles.container],
     parent: hero
   })
-
-  const heroSlider = getSlider('hero__slider');
-  heroSlider.classList.add('hero__slider');
-  container.append(heroSlider);
 
   const heroContent = createElement({
     tag: 'div',
@@ -53,17 +81,46 @@ export function getHero(getArray) {
     cardsList.innerHTML = '';
     renderItems(getArray);
   })
+
   searchButtonRemove.addEventListener('click', () => {
     cardsList.innerHTML = '';
     renderItems(getArray);
   })
+
   cardsList.innerHTML = '';
   renderItems(getArray);
 
-  function renderItems(array = itemsArray) {
+  function getConteinerInfoEmpty(count = 0, getPage) {
+    const conteinerInfoEmpty = getInfo({
+      imgUrl: getPage === '#/profile' ? 'img/profileSmile.png' : 'img/sedSmile.png',
+      title: getPage === '#/profile' ? 'У вас нет заказов' : 'Закладок нет :(',
+      description: getPage === '#/profile' ? 'Вы нищеброд? Оформите хотя бы один заказ.' : 'Вы ничего не добавляли в закладки',
+      closeInfo() {
+        router.navigate('/');
+      }
+    });
+
+    if (getArray?.length === count) {
+      cardsList.remove();
+      search.remove();
+      heroTitle.remove();
+      container.append(conteinerInfoEmpty);
+    } else {
+      conteinerInfoEmpty.remove();
+      heroContent.append(heroTitle);
+      heroContent.append(search);
+      container.append(cardsList);
+    }
+  }
+
+  function renderItems(array = arrayLoadItems) {
+
+    // getConteinerInfoEmpty(0, window.location.hash);
+
     return array
       .filter(item => item.titleSmall.toLowerCase().includes(searchInput.value.toLowerCase()))
       .forEach(item => {
+
         const li = createElement({
           tag: 'li',
           classList: ['hero__card'],
@@ -79,7 +136,8 @@ export function getHero(getArray) {
           onAddToFavorite() {
             const isExist = favoriteItemsArray.find(itemFavorite => itemFavorite.id === item.id);
             if (isExist) {
-              document.querySelector(`[data-card="${isExist.id}"]`)?.querySelectorAll('use')[0].setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', './img/svg/sprite.svg#favorite');
+              // getConteinerInfoEmpty(1, window.location.hash)
+              document.querySelector(`[data-card="${isExist.id}"]`)?.querySelectorAll('use')[0].setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'img/svg/sprite.svg#favorite');
               let index = favoriteItemsArray.indexOf(isExist);
               favoriteItemsArray.splice(index, 1);
               fetch(`https://my-project-87c87-default-rtdb.europe-west1.firebasedatabase.app/favorite/${isExist.key || isExist.keyId}.json`, {
@@ -110,6 +168,7 @@ export function getHero(getArray) {
           onAddToCart() {
             const isExist = cartItemsArray.find(itemCart => itemCart.id === item.id);
             if (isExist) {
+              document.querySelector('.nav__icon-text_total-price').textContent = `${Math.abs(cartItemsArray.reduce((acc, totalItem) => acc - totalItem.price, isExist.price))} руб.`
               let index = cartItemsArray.indexOf(isExist);
               cartItemsArray.splice(index, 1);
               fetch(`https://my-project-87c87-default-rtdb.europe-west1.firebasedatabase.app/cart/${isExist.key || isExist.keyId}.json`, {
@@ -117,6 +176,7 @@ export function getHero(getArray) {
               })
               return
             }
+            document.querySelector('.nav__icon-text_total-price').textContent = `${Math.abs(cartItemsArray.reduce((acc, totalItem) => totalItem.price + acc, item.price))} руб.`
             fetch('https://my-project-87c87-default-rtdb.europe-west1.firebasedatabase.app/cart.json', {
               method: 'POST',
               body: JSON.stringify(item),

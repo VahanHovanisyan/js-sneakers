@@ -1,5 +1,6 @@
 import styles from './cartItem.module.scss';
 import createElement from "/src/components/createElement";
+
 function createCartItem(option) {
 
   const defaultOptions = {
@@ -77,7 +78,7 @@ function createCartItem(option) {
   svg.classList.add(styles.itemIcon);
 
   const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-  use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', './img/svg/sprite.svg#cartIconRemove');
+  use.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', 'img/svg/sprite.svg#cartIconRemove');
   svg.appendChild(use);
 
   button.appendChild(svg);

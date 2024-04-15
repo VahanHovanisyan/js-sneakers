@@ -60,3 +60,21 @@
         max-width: 640px;
     }
 }
+
+.load {
+    background-color: #bdbdbd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.load_img {
+    width: 50%;
+    height: 150px;
+    margin-bottom: 15px;
+}
+
+.load_text {
+    width: 200px;
+    height: 150px;
+    margin-bottom: 10px;
+}
