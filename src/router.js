@@ -2,7 +2,7 @@
 import Navigo from "navigo";
 import getPageContainer from "/src/components/pageContainer";
 
-export const router = new Navigo('/', { hash: true });
+export const router = new Navigo('/js-sneakers', { hash: true });
 
 const main = getPageContainer();
 
