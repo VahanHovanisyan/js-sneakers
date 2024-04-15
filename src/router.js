@@ -35,7 +35,7 @@ export function renderPages() {
   // router notFound page
   router.notFound(async () => {
     main.innerHTML = '';
-    const notFoundModule = await import('./pages/404.js');
+    const notFoundModule = await import('./pages/404');
     const notFoundPage = notFoundModule.getNotFoundPage();
     main.append(notFoundPage);
   })

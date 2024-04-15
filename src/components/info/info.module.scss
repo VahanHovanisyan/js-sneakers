@@ -1,0 +1,13 @@
+.cartEmpty {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartEmptyImg {
+  max-width: 120px;
+  height: 100px;
+  margin: 0 auto 20px;
+}
